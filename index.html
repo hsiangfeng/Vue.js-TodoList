@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>代辦事項</title>
+        <link rel="stylesheet" href="css/all.css">
+    </head>
+
+    <body>
+        <div id="wrap" class="wrap">
+            <div class="container">
+                <div class="img">
+                    <img class="logo" src="img/logo.svg">
+                </div>
+                <div class="content">
+                    <Label for="input-hex">代辦事項</Label>
+                    <input id="input-hex" class="input-hex" v-model="newTodo" v-on:keyup.enter="addTodo(newTodo)" type="text"
+                        placeholder="請輸入代辦事項">
+                    <button class="btn-hex" v-on:click="addTodo(newTodo)">新增代辦事項</button>
+                    <h2 class="h2">您目前輸入的代辦事項：{{newTodo}}</h2>
+                    <ul class="manubtn">
+                        <li><button class="btn-hex" v-on:click="showTodoAll()">顯示全部</button></li>
+                        <li> <button class="btn-hex" v-on:click="finishTodoAll()">全部完成</button></li>
+                        <li><button class="btn-hex" v-on:click="cancelTodoAll()">全部取消</button></li>
+                        <li><button class="btn-hex" v-on:click="hideTodoAll()">顯示未完成</button></li>
+                        <li><button class="btn-hex" v-on:click="showFinishTodoAll()">顯示已完成</button></li>
+                        <li><button class="btn-hex" v-on:click="TodoDelectAll()">全部刪除</button></li>
+                    </ul>
+                    <ul id="todoList" class="todoList">
+                        <li v-for="todo in todos" v-bind:class="{active:todo.completed}">
+                            <p class="p-todo">
+                                <input type="checkbox" v-model="todo.completed">
+                                {{todo.content}} -
+                                <a href="#" v-on:click.prevent="finishTodo(todo)" v-model="todo.show" class="btn-hex">完成事項</a>
+                                <a href="#" v-on:click.prevent="removeTodo(todo)" class="btn-hex">刪除</a>
+                            </p>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+            <pre class="d-none">
+                    {{this.todos}}
+            </pre>
+        </div>
+        <!-- <script src="js/vue.min.js"></script> -->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+        <script src="js/all.js"></script>
+    </body>
+
+</html>
