@@ -56,7 +56,9 @@ table {
     background-size: cover;
     height: 650px;
     width: 100%;
-    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .manubtn li{
     display: inline;
@@ -90,16 +92,6 @@ li.active{
 .btn-hex:hover{
    background-color: #00cc99;
    color: #fff;
-}
-.img{
-    position: absolute;
-    left: 25%;
-    top: 25%;
-}
-.content{
-    position: absolute;
-    right: 0;
-    top: 25%;
 }
 .input-hex{
     width: 250px;
